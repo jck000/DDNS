@@ -1,0 +1,18 @@
+
+Client 
+------------
+crontab.client - Client side crontab file
+ddns_client.sh - Client side script.  Place in /usr/local/bin
+
+
+Server
+-------------
+ddns.conf      - Apache config file.  Place in /etc/httpd/conf.d
+ddns_init      - Place in /etc/init.d to start application
+ddns_server.sh - Place in /home/ddns/apps/DDNS/ddns-bin.  This shell script 
+                   does everything
+application    - This is the Dancer app.  It accepts a request, validates it againts
+                   the database and launches the above shell script.
+ddns.sql       - ddns table
+
+

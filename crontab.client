@@ -1,0 +1,4 @@
+
+# Run every 20 minutes
+
+2,22,42 * * * * /usr/local/bin/ddns_client.sh 2>&1 /dev/null

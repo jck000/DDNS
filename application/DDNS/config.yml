@@ -1,0 +1,68 @@
+# This is the main configuration file of your Dancer app
+# env-related settings should go to environments/$env.yml
+# all the settings in this file will be loaded at Dancer's startup.
+
+# Your application's name
+appname: "DDNS"
+
+# The default layout to use for your application (located in
+# views/layouts/main.tt)
+layout: "cldl"
+
+# when the charset is set to UTF-8 Dancer will handle for you
+# all the magic of encoding and decoding. You should not care
+# about unicode within your app when this setting is set (recommended).
+charset: "UTF-8"
+
+# When set to true Dancer will look to X-Forwarded-Protocol and X-Forwarded-host 
+# # when constructing URLs (for example, when using redirect. This is useful if your 
+# # application is behind a proxy.  (Jack)
+
+behind_proxy: true
+
+# template engine
+# simple: default and very basic template engine
+# template_toolkit: TT
+
+template: "template_toolkit"
+
+engines:
+  template_toolkit:
+    start_tag:    '[%'
+    end_tag:      '%]'
+    CACHE_SIZE:   64
+    PRE_CHOMP:    2
+    POST_CHOMP:   2
+    TRIM:         1
+    EVAL_PERL:    0
+    ANYCASE:      1
+    ENCODING:     'utf8'
+
+  logger: "file"
+  serializer: JSON
+
+# For session support enable the following line and see Dancer::Session
+session: "YAML"
+session_dir: "/tmp/DDNS-sess"
+
+
+plugins:
+  Database:
+    driver:        'mysql'
+    database:      'ddns'
+    host:          'localhost'
+    port:          3306
+    username:      'user'
+    password:      'Pass'
+    dbi_params:
+      RaiseError:         1
+      PrintError:         0
+      PrintWarn:          0
+      ShowErrorStatement: 1
+      AutoCommit:         1
+
+    log_queries:   1
+
+template_email_to: 'ddns@example.com '
+
+
